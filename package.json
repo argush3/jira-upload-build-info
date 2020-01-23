@@ -1,0 +1,26 @@
+{
+  "name": "retrieve-jira-oauth-access-token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/argush3/retrieve-jira-oauth-access-token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/argush3/retrieve-jira-oauth-access-token/issues"
+  },
+  "homepage": "https://github.com/argush3/retrieve-jira-oauth-access-token#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.1",
+    "@actions/github": "^2.0.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
+  }
+}
