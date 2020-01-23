@@ -80,6 +80,8 @@ async function submitBuildInfo() {
         bodyData = JSON.stringify(bodyData);
         options.body = bodyData;
 
+        options.url = 'https://api.atlassian.com/jira/builds/0.1/cloud/${cloudId}/bulk';
+
         console.log("options: ", options);
 
         // const payload = JSON.stringify(github.context.payload, undefined, 2)
