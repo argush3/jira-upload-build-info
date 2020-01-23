@@ -42,7 +42,8 @@ let options = {
     url: '',
     headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: ''
     },
     body: {}
 };
@@ -50,6 +51,7 @@ let options = {
 async function submitBuildInfo() {
     try {
         const cloudId = core.getInput('cloud-id');
+        const accessToken = core.getInput('access_token');
         const pipelineId = core.getInput('pipeline-id');
         const buildNumber = core.getInput('build-number');
         const buildDisplayName = core.getInput('build-display-name');
@@ -80,7 +82,9 @@ async function submitBuildInfo() {
         bodyData = JSON.stringify(bodyData);
         options.body = bodyData;
 
+
         options.url = 'https://api.atlassian.com/jira/builds/0.1/cloud/${cloudId}/bulk';
+        options.headers.Authorization = 'Bearer ${accessToken}';
 
         console.log("options: ", options);
 
