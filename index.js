@@ -3,7 +3,7 @@ const github = require('@actions/github');
 let request = require('request-promise-native');
 
 
-var build =
+let build =
     {
         schemaVersion: "1.0",
         pipelineId: "",
@@ -20,24 +20,24 @@ var build =
         ]
     };
 
-var buildRef =
+let buildRef =
     {
         commit: {
             id: "",
             repositoryUri: ""
         },
         ref: {
-            name: buildRef,
+            name: "buildRef",
             uri: ""
         }
     };
 
-var bodyData =
+let bodyData =
     {
         builds: []
     };
 
-var options = {
+let options = {
     method: 'POST',
     url: '',
     headers: {
