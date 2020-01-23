@@ -59,7 +59,7 @@ async function submitBuildInfo() {
         const buildUrl = core.getInput('build-url');
         const updateSequenceNumber = core.getInput('update-sequence-number');
         const lastUpdated = core.getInput('last-updated');
-        const issueKeys = core.getInput('issueKeys');
+        const issueKeys = core.getInput('issue-keys');
         const commitId = core.getInput('commit-id');
         const repoUrl = core.getInput('repo-url');
         const buildRefUrl = core.getInput('build-ref-url');
@@ -92,7 +92,7 @@ async function submitBuildInfo() {
         // console.log(`The event payload: ${payload}`);
 
         const response = await request(options);
-        // console.log("response: ", response);
+        console.log("response: ", response);
         core.setOutput("response", JSON.parse(response));
     } catch (error) {
         core.setFailed(error.message);
