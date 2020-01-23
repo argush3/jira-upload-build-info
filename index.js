@@ -15,9 +15,13 @@ let build =
         lastUpdated: "",
         issueKeys: [],
         testInfo: {},
-        references: [
-
-        ]
+        testInfo: {
+            totalNumber: 6,
+            numberPassed: 1,
+            numberFailed: 3,
+            numberSkipped: 2
+        },
+        references: []
     };
 
 let buildRef =
