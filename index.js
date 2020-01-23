@@ -51,7 +51,7 @@ let options = {
 async function submitBuildInfo() {
     try {
         const cloudId = core.getInput('cloud-id');
-        const accessToken = core.getInput('access_token');
+        const accessToken = core.getInput('access-token');
         const pipelineId = core.getInput('pipeline-id');
         const buildNumber = core.getInput('build-number');
         const buildDisplayName = core.getInput('build-display-name');
