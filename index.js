@@ -3,7 +3,7 @@ const github = require('@actions/github');
 let request = require('request-promise-native');
 
 
-let build =
+var build =
     {
         schemaVersion: "1.0",
         pipelineId: "",
@@ -20,7 +20,7 @@ let build =
         ]
     };
 
-let buildRef =
+var buildRef =
     {
         commit: {
             id: "",
