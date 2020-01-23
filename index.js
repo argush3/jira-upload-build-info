@@ -83,8 +83,8 @@ async function submitBuildInfo() {
         options.body = bodyData;
 
 
-        options.url = 'https://api.atlassian.com/jira/builds/0.1/cloud/${cloudId}/bulk';
-        options.headers.Authorization = 'Bearer ${accessToken}';
+        options.url = "https://api.atlassian.com/jira/builds/0.1/cloud/" + cloudId + "/bulk";
+        options.headers.Authorization = "Bearer " + accessToken;
 
         console.log("options: ", options);
 
