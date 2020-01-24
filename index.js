@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-let request = require('request-promise-native');
-
+const request = require('request-promise-native');
+const dateFormat = require('dateformat');
 
 let build =
     {
@@ -62,13 +62,15 @@ async function submitBuildInfo() {
         const buildState = core.getInput('build-state');
         const buildUrl = core.getInput('build-url');
         const updateSequenceNumber = core.getInput('update-sequence-number');
-        const lastUpdated = core.getInput('last-updated');
+        let lastUpdated = core.getInput('last-updated');
         const issueKeys = core.getInput('issue-keys');
         const commitId = core.getInput('commit-id');
         const repoUrl = core.getInput('repo-url');
         const buildRefUrl = core.getInput('build-ref-url');
 
         console.log("lastUpdated: " + lastUpdated);
+        lastUpdated = dateFormat(lastUpdated, "yyyy-mm-dd'T'HH:MM:ss'Z'");
+        console.log("formatted lastUpdated: " + lastUpdated);
         buildRef.commit.id = commitId;
         buildRef.commit.repositoryUri = buildRefUrl;
         buildRef.ref.uri = buildRefUrl;
