@@ -90,7 +90,7 @@ async function submitBuildInfo() {
         options.url = "https://api.atlassian.com/jira/builds/0.1/cloud/" + cloudId + "/bulk";
         options.headers.Authorization = "Bearer " + accessToken;
 
-        console.log("options: ", options);
+        // console.log("options: ", options);
 
         // const payload = JSON.stringify(github.context.payload, undefined, 2)
         // console.log(`The event payload: ${payload}`);
