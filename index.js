@@ -68,6 +68,7 @@ async function submitBuildInfo() {
         const repoUrl = core.getInput('repo-url');
         const buildRefUrl = core.getInput('build-ref-url');
 
+        console.log("lastUpdated: " + lastUpdated);
         buildRef.commit.id = commitId;
         buildRef.commit.repositoryUri = buildRefUrl;
         buildRef.ref.uri = buildRefUrl;
@@ -91,6 +92,7 @@ async function submitBuildInfo() {
         options.headers.Authorization = "Bearer " + accessToken;
 
         // console.log("options: ", options);
+        console.log("options.body.lastUpdated: " + options.body.lastUpdated);
 
         // const payload = JSON.stringify(github.context.payload, undefined, 2)
         // console.log(`The event payload: ${payload}`);
