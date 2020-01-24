@@ -68,9 +68,9 @@ async function submitBuildInfo() {
         const repoUrl = core.getInput('repo-url');
         const buildRefUrl = core.getInput('build-ref-url');
 
-        console.log("lastUpdated: " + lastUpdated);
+        // console.log("lastUpdated: " + lastUpdated);
         lastUpdated = dateFormat(lastUpdated, "yyyy-mm-dd'T'HH:MM:ss'Z'");
-        console.log("formatted lastUpdated: " + lastUpdated);
+        // console.log("formatted lastUpdated: " + lastUpdated);
         buildRef.commit.id = commitId;
         buildRef.commit.repositoryUri = buildRefUrl;
         buildRef.ref.uri = buildRefUrl;
@@ -87,20 +87,20 @@ async function submitBuildInfo() {
 
         bodyData.builds = [build];
         bodyData = JSON.stringify(bodyData);
-        console.log("bodyData: " + bodyData);
+        // console.log("bodyData: " + bodyData);
 
         options.body = bodyData;
         options.url = "https://api.atlassian.com/jira/builds/0.1/cloud/" + cloudId + "/bulk";
         options.headers.Authorization = "Bearer " + accessToken;
 
-        console.log("options: ", options);
+        // console.log("options: ", options);
 
-        // const payload = JSON.stringify(github.context.payload, undefined, 2)
-        // console.log(`The event payload: ${payload}`);
+        const payload = JSON.stringify(github.context.payload, undefined, 2)
+        console.log(`The event payload: ${payload}`);
 
         let response = await request(options);
         response = JSON.parse(response);
-        console.log("response: ", response);
+        // console.log("response: ", response);
         if(response.rejectedBuilds && response.rejectedBuilds.length > 0) {
             const rejectedBuild = response.rejectedBuilds[0];
             console.log("errors: ", rejectedBuild.errors);
