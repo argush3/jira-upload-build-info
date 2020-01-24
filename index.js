@@ -92,7 +92,7 @@ async function submitBuildInfo() {
         options.headers.Authorization = "Bearer " + accessToken;
 
         // console.log("options: ", options);
-        console.log("options.body.lastUpdated: " + options.body.lastUpdated);
+        console.log("options.body.lastUpdated: " + options.body.builds[0].lastUpdated);
 
         // const payload = JSON.stringify(github.context.payload, undefined, 2)
         // console.log(`The event payload: ${payload}`);
