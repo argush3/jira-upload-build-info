@@ -95,9 +95,16 @@ async function submitBuildInfo() {
         // const payload = JSON.stringify(github.context.payload, undefined, 2)
         // console.log(`The event payload: ${payload}`);
 
-        const response = await request(options);
+        let response = await request(options);
         console.log("response: ", response);
-        core.setOutput("response", JSON.parse(response));
+        response = JSON.parse(response);
+        if(response.errors && response.errors.length > 0) {
+            let errors = response.map(item => item.message).join(',');
+            errors.substr(0, errors.length - 1);
+            console.log("errors: ${errors}");
+            core.setFailed(errors);
+        }
+        core.setOutput("response", response);
     } catch (error) {
         core.setFailed(error.message);
     }
