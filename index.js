@@ -96,8 +96,8 @@ async function submitBuildInfo() {
         // console.log(`The event payload: ${payload}`);
 
         let response = await request(options);
-        console.log("response: ", response);
         response = JSON.parse(response);
+        console.log("response: ", response);
         if(response.errors && response.errors.length > 0) {
             console.log("found errors: ", response.errors);
             let errors = response.map(item => item.message).join(',');
