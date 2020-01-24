@@ -97,8 +97,9 @@ async function submitBuildInfo() {
 
         let response = await request(options);
         response = JSON.parse(response);
-        console.log("response: ", response);
+        console.log("responsezzz: ", response);
         if(response.rejectedBuilds && response.rejectedBuilds.length > 0) {
+            console.log("error block");
             const rejectedBuild = response.rejectedBuilds[0];
             console.log("found errors: ", rejectedBuild.errors);
             let errors = rejectedBuild.errors.map(error => error.message).join(',');
