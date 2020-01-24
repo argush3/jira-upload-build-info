@@ -81,6 +81,7 @@ async function submitBuildInfo() {
         build.displayName = buildDisplayName;
         build.url = buildUrl;
         build.state = buildState;
+        console.log("build.state: " + build.state);
         build.lastUpdated = lastUpdated;
         build.issueKeys = issueKeys.split(',');
         build.references = [buildRef];
