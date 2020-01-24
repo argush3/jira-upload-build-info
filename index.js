@@ -97,14 +97,13 @@ async function submitBuildInfo() {
 
         let response = await request(options);
         response = JSON.parse(response);
-        console.log("responsezzz: ", response);
+        console.log("response: ", response);
         if(response.rejectedBuilds && response.rejectedBuilds.length > 0) {
-            console.log("error block");
             const rejectedBuild = response.rejectedBuilds[0];
-            console.log("found errors: ", rejectedBuild.errors);
+            console.log("errors: ", rejectedBuild.errors);
             let errors = rejectedBuild.errors.map(error => error.message).join(',');
             errors.substr(0, errors.length - 1);
-            console.log("errors: ${errors}");
+            console.log("joined errors: ", errors);
             core.setFailed(errors);
         }
         core.setOutput("response", response);
