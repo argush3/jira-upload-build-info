@@ -96,7 +96,7 @@ async function submitBuildInfo() {
         // console.log("options: ", options);
 
         const payload = JSON.stringify(github.context.payload, undefined, 2)
-        console.log(`The event payload: ${payload}`);
+        // console.log(`The event payload: ${payload}`);
 
         let response = await request(options);
         response = JSON.parse(response);
