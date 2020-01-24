@@ -99,6 +99,7 @@ async function submitBuildInfo() {
         console.log("response: ", response);
         response = JSON.parse(response);
         if(response.errors && response.errors.length > 0) {
+            console.log("found errors: ", response.errors);
             let errors = response.map(item => item.message).join(',');
             errors.substr(0, errors.length - 1);
             console.log("errors: ${errors}");
