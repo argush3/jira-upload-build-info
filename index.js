@@ -14,12 +14,11 @@ let build =
         state: "",
         lastUpdated: "",
         issueKeys: [],
-        testInfo: {},
         testInfo: {
-            totalNumber: 6,
-            numberPassed: 1,
-            numberFailed: 3,
-            numberSkipped: 2
+            totalNumber: 0,
+            numberPassed: 0,
+            numberFailed: 0,
+            numberSkipped: 0
         },
         references: []
     };
@@ -67,6 +66,10 @@ async function submitBuildInfo() {
         const commitId = core.getInput('commit-id');
         const repoUrl = core.getInput('repo-url');
         const buildRefUrl = core.getInput('build-ref-url');
+        const testInfoTotalNum = core.getInput('test-info-total-num');
+        const testInfoNumPassed = core.getInput('test-info-num-passed');
+        const testInfoNumFailed = core.getInput('test-info-num-failed');
+        const testInfoNumSkipped = core.getInput('test-info-num-skipped');
 
         // console.log("lastUpdated: " + lastUpdated);
         lastUpdated = dateFormat(lastUpdated, "yyyy-mm-dd'T'HH:MM:ss'Z'");
@@ -86,9 +89,19 @@ async function submitBuildInfo() {
         build.issueKeys = issueKeys.split(',');
         build.references = [buildRef];
 
+        console.log("testInfoTotalNum: " + testInfoTotalNum);
+
+        if(testInfoTotalNum) {
+            console.log("assign test info");
+            build.testInfo.totalNumber = testInfoTotalNum;
+            build.testInfo.numberPassed = testInfoNumPassed;
+            build.testInfo.numberFailed = testInfoNumFailed;
+            build.testInfo.numberSkipped = testInfoNumSkipped;
+        }
+
         bodyData.builds = [build];
         bodyData = JSON.stringify(bodyData);
-        // console.log("bodyData: " + bodyData);
+        console.log("bodyData: " + bodyData);
 
         options.body = bodyData;
         options.url = "https://api.atlassian.com/jira/builds/0.1/cloud/" + cloudId + "/bulk";

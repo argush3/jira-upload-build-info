@@ -40,6 +40,18 @@ inputs:
   build-ref-url:
     description: ''
     required: true
+  test-info-total-num:
+    description: ''
+    required: false
+  test-info-num-passed:
+    description: ''
+    required: false
+  test-info-num-failed:
+    description: ''
+    required: false
+  test-info-num-skipped:
+    description: ''
+    required: false
 
 outputs:
   response:
