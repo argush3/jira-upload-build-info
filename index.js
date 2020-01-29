@@ -151,7 +151,7 @@ async function getAccessToken() {
 
     tokenBodyData.client_id = clientId;
     tokenBodyData.client_secret = clientSecret;
-    tokenBodyData = JSON.stringify(bodyData);
+    tokenBodyData = JSON.stringify(tokenBodyData);
     tokenOptions.body = tokenBodyData;
     console.log("getAccessToken - 4");
     // const payload = JSON.stringify(github.context.payload, undefined, 2)
