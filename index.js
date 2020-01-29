@@ -113,7 +113,7 @@ async function submitBuildInfo() {
         // console.log(`The event payload: ${payload}`);
 
         let responseJson = await request(options);
-        let response = JSON.parse(response);
+        let response = JSON.parse(responseJson);
         // console.log("response: ", response);
         if(response.rejectedBuilds && response.rejectedBuilds.length > 0) {
             const rejectedBuild = response.rejectedBuilds[0];
