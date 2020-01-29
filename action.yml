@@ -10,9 +10,6 @@ inputs:
   client-secret:
     description: 'jira oauth client secret'
     required: true
-#  access-token:
-#    description: 'Jira OAuth access token retrieved via argush3/retrieve-jira-oauth-access-token@master Github Action'
-#    required: true
   pipeline-id:
     description: ''
     required: true

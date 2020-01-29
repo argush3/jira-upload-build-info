@@ -70,7 +70,6 @@ let options = {
 
 async function submitBuildInfo(accessToken) {
     const cloudId = core.getInput('cloud-id');
-    // const accessToken = core.getInput('access-token');
     const pipelineId = core.getInput('pipeline-id');
     const buildNumber = core.getInput('build-number');
     const buildDisplayName = core.getInput('build-display-name');
@@ -143,17 +142,13 @@ async function submitBuildInfo(accessToken) {
 }
 
 async function getAccessToken() {
-    console.log("getAccessToken - 1");
     const clientId = core.getInput('client-id');
-    console.log("getAccessToken - 2");
     const clientSecret = core.getInput('client-secret');
-    console.log("getAccessToken - 3");
 
     tokenBodyData.client_id = clientId;
     tokenBodyData.client_secret = clientSecret;
     tokenBodyData = JSON.stringify(tokenBodyData);
     tokenOptions.body = tokenBodyData;
-    console.log("getAccessToken - 4");
     // const payload = JSON.stringify(github.context.payload, undefined, 2)
     // console.log(`The event payload: ${payload}`);
 
@@ -165,12 +160,9 @@ async function getAccessToken() {
 
 (async function () {
     try {
-        console.log("async - 1");
         const accessTokenResponse = await getAccessToken();
-        console.log("async - 2");
         console.log("accessTokenResponse: ", accessTokenResponse);
         await submitBuildInfo(accessTokenResponse.access_token);
-        console.log("async - 3");
         console.log("finished submiting build info");
     } catch (error) {
         core.setFailed(error.message);
