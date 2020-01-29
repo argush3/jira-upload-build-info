@@ -112,8 +112,8 @@ async function submitBuildInfo() {
         const payload = JSON.stringify(github.context.payload, undefined, 2)
         // console.log(`The event payload: ${payload}`);
 
-        let response = await request(options);
-        response = JSON.parse(response);
+        let responseJson = await request(options);
+        let response = JSON.parse(response);
         // console.log("response: ", response);
         if(response.rejectedBuilds && response.rejectedBuilds.length > 0) {
             const rejectedBuild = response.rejectedBuilds[0];
@@ -123,7 +123,7 @@ async function submitBuildInfo() {
             console.log("joined errors: ", errors);
             core.setFailed(errors);
         }
-        core.setOutput("response", response);
+        core.setOutput("response", responseJson);
     } catch (error) {
         core.setFailed(error.message);
     }
