@@ -160,7 +160,7 @@ async function getAccessToken() {
     console.log("tokenOptions: ", tokenOptions);
     const response = await request(tokenOptions);
     console.log("getAccessToken response: ", response);
-    return response;
+    return JSON.parse(response);
 }
 
 (async function () {
