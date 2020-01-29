@@ -143,17 +143,21 @@ async function submitBuildInfo(accessToken) {
 }
 
 async function getAccessToken() {
+    console.log("getAccessToken - 1");
     const clientId = core.getInput('client-id');
+    console.log("getAccessToken - 2");
     const clientSecret = core.getInput('client-secret');
+    console.log("getAccessToken - 3");
 
     tokenBodyData.client_id = clientId;
     tokenBodyData.client_secret = clientSecret;
     tokenBodyData = JSON.stringify(bodyData);
     tokenOptions.body = tokenBodyData;
-
+    console.log("getAccessToken - 4");
     // const payload = JSON.stringify(github.context.payload, undefined, 2)
     // console.log(`The event payload: ${payload}`);
 
+    console.log("tokenOptions: ", tokenOptions);
     const response = await request(tokenOptions);
     console.log("getAccessToken response: ", response);
     return response;
@@ -161,9 +165,12 @@ async function getAccessToken() {
 
 (async function () {
     try {
+        console.log("async - 1");
         const accessTokenResponse = await getAccessToken();
+        console.log("async - 2");
         console.log("accessTokenResponse: ", accessTokenResponse);
         await submitBuildInfo(accessTokenResponse.access_token);
+        console.log("async - 3");
         console.log("finished submiting build info");
     } catch (error) {
         core.setFailed(error.message);
