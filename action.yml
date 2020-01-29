@@ -4,9 +4,15 @@ inputs:
   cloud-id:
     description: 'Jira cloud id'
     required: true
-  access-token:
-    description: 'Jira OAuth access token retrieved via argush3/retrieve-jira-oauth-access-token@master Github Action'
+  client-id:
+    description: 'jira oauth client id'
     required: true
+  client-secret:
+    description: 'jira oauth client secret'
+    required: true
+#  access-token:
+#    description: 'Jira OAuth access token retrieved via argush3/retrieve-jira-oauth-access-token@master Github Action'
+#    required: true
   pipeline-id:
     description: ''
     required: true
