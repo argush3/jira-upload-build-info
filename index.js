@@ -146,15 +146,15 @@ async function getAccessToken() {
     const clientId = core.getInput('client-id');
     const clientSecret = core.getInput('client-secret');
 
-    bodyData.client_id = clientId;
-    bodyData.client_secret = clientSecret;
-    bodyData = JSON.stringify(bodyData);
-    options.body = bodyData;
+    tokenBodyData.client_id = clientId;
+    tokenBodyData.client_secret = clientSecret;
+    tokenBodyData = JSON.stringify(bodyData);
+    tokenOptions.body = tokenBodyData;
 
     // const payload = JSON.stringify(github.context.payload, undefined, 2)
     // console.log(`The event payload: ${payload}`);
 
-    const response = await request(options);
+    const response = await request(tokenOptions);
     console.log("getAccessToken response: ", response);
     return response;
 }
